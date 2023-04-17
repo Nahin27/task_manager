@@ -1,25 +1,53 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from "react";
+import Tasks from "./components/Tasks";
+import AddTask from "./components/AddTask";
 
-function App() {
+// TODO: Add functionality to change completion status of a task
+
+const App = () => {
+  const [tasks, setTasks] = useState([
+    {
+      id: 1,
+      name: "task 1",
+      completion: true
+    },
+    {
+      id: 2,
+      name: "task 2",
+      completion: true
+    },
+    {
+      id: 3,
+      name: "taske 3",
+      completion: true
+    }
+  ])
+  const [newTask, setNewTask] = useState("")
+
+
+  const handleChange = (event) => {
+    setNewTask(event.target.value)
+    console.log(event.target.value)
+  }
+
+  const handleAddingTask = (event) => {
+    event.preventDefault()
+    const taskToAdd = {
+      id: tasks.length + 1,
+      name: newTask,
+      completion: false
+    }
+    setTasks(tasks.concat(taskToAdd))
+    setNewTask("")
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <h1>To-Do List</h1>
+      <AddTask handleAddingTask={handleAddingTask} handleChange={handleChange} newTask={newTask}/>
+      <Tasks tasks={tasks} />
     </div>
-  );
+  )
 }
 
 export default App;
