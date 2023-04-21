@@ -1,4 +1,9 @@
 {
-    "name": "task 1",
-    "completion": "false"
+    "tasks":[
+        {
+            "id": 1,
+            "name": "task 1",
+            "completion": true
+        }
+    ]
 }
