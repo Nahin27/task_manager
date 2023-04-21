@@ -1,10 +1,10 @@
 import Task from "./Task"
 
-const Tasks = ({ tasks, checked, onChange }) => (
+const Tasks = ({ tasks, onChange }) => (
     <ul>
         {tasks.map(task => {
             return(
-                <Task name={task.name} key={task.id} checked={checked} onChange={onChange}/>
+                <Task name={task.name} key={task.id} checked={task.completion ? true : false} onChange={onChange(task.id)}/>
             )
         })}
     </ul>

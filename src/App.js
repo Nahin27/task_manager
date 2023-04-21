@@ -1,6 +1,5 @@
 import { useState } from "react";
 import Tasks from "./components/Tasks";
-import Task from "./components/Task";
 import AddTask from "./components/AddTask";
 
 // TODO: Add functionality to change completion status of a task
@@ -58,13 +57,7 @@ const App = () => {
     <div>
       <h1>To-Do List</h1>
       <AddTask handleAddingTask={handleAddingTask} handleChange={handleChange} newTask={newTask}/>
-      <ul>
-        {tasks.map(task => {
-          return (
-            <Task name={task.name} checked={task.completion ? true : false} key={task.id} onChange={handleCheckbox(task.id)} />
-          )
-        })}
-      </ul>
+      <Tasks tasks={tasks} onChange={handleCheckbox}/>
     </div>
   )
 }
