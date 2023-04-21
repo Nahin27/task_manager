@@ -2,9 +2,8 @@ import { useState } from "react";
 import Tasks from "./components/Tasks";
 import AddTask from "./components/AddTask";
 
-// TODO: Add functionality to change completion status of a task
-
 const App = () => {
+  // states
   const [tasks, setTasks] = useState([
     {
       id: 1,
@@ -23,7 +22,9 @@ const App = () => {
     }
   ])
   const [newTask, setNewTask] = useState("")
+  // states end
 
+  // event handlers
   const handleChange = (event) => {
     setNewTask(event.target.value)
     console.log(event.target.value)
@@ -52,6 +53,7 @@ const App = () => {
     }
     return helper
   }
+  // event handlers end
 
   return (
     <div>
